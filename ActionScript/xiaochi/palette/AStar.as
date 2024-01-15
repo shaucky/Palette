@@ -42,7 +42,7 @@
 		}
 		public static function set heuristics(value:String)
 		{
-			if (value == MANHATTAN)
+			if (value == MANHATTAN || value == EUCLID)
 			{
 				_heuristics = value;
 			}
