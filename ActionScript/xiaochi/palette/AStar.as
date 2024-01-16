@@ -142,8 +142,6 @@
 			{
 				_openList = new Vector.<AStarNode>();
 				_closedList = new Vector.<AStarNode>();
-				startNode = map[startX][startY];
-				endNode = map[endX][endY];
 				startNode.gCost = 0;
 				startNode.hCost = heurisFunc(startNode, endNode);
 				startNode.fCost = startNode.hCost;
