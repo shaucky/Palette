@@ -53,7 +53,7 @@
 		 */
 		public function AStar()
 		{
-			throw(new TypeError("TypeError: Error #1076: AStar is not a constructor."));
+			throw(new TypeError("Error #1076: AStar is not a constructor."));
 		}
 		
 		/**
@@ -64,7 +64,7 @@
 		 * @param endX endX参数指定终点网格的x值。
 		 * @param endY endY参数指定终点网格的y值。
 		 */
-		public static function findPath(map:Vector.<Vector.<AStarNode>>, startX:Number, startY:Number, endX:Number, endY:Number):Vector.<AStarNode>
+		public static function findPath(map:Vector.<Vector.<AStarNode>>, startX:int, startY:int, endX:int, endY:int):Vector.<AStarNode>
 		{
 			var startNode:AStarNode;
 			var endNode:AStarNode;

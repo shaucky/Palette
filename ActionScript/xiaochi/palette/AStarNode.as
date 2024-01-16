@@ -8,8 +8,8 @@
 	 */
 	public class AStarNode
 	{
-		public var x:Number;
-		public var y:Number;
+		public var x:int;
+		public var y:int;
 		public var walkable:Boolean;
 		internal var fCost:Number;
 		internal var gCost:Number;
@@ -25,7 +25,7 @@
 		 * AStarNode的构造函数。一般不会直接使用AStarNode的构造函数，通常是AStar类内部会创建AStarNode实例。
 		 * 通过AStarNode的构造函数可以直接指定x、y和walkable属性，但是AStarNode的x、y与包含它的地图（实质上是AStarNode类型的Vector二维数组）并不存在绝对的关联，修改AStarNode的属性不会影响它在地图数组中的位置。
 		 */
-		public function AStarNode(x:Number, y:Number, walkable:Boolean = true)
+		public function AStarNode(x:int, y:int, walkable:Boolean = true)
 		{
 			this.x = x;
 			this.y = y;
