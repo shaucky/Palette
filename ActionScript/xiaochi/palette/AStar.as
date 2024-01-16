@@ -72,7 +72,6 @@
 			var currNode:AStarNode;
 			var tempGCost:Number;
 			var heurisFunc:Function;
-			var index:int;
 			try
 			{
 				startNode = map[startX][startY];
@@ -93,8 +92,8 @@
 			if (_mode == GRID_MODE)
 			{
 				_openList = new Array();
-				_openList.push(startNode);
 				_closedList = new Array();
+				_openList.push(startNode);
 				for (var x:int = 0;x < map.length;x++)
 				{
 					for (var y:int = 0;y < map[0].length;y++)
@@ -152,12 +151,8 @@
 					if (currNode == endNode)
 					{
 						return retracePath(startNode, endNode);
-					}        
-					index = _openList.indexOf(currNode);
-					if(index != -1)
-					{
-						_openList.splice(index, 1);
 					}
+					_openList.removeAt(_openList.indexOf(currNode));
 					_closedList.push(currNode);
 					for each (var waypoint:AStarNode in currNode.waypoints)
 					{
@@ -260,7 +255,7 @@
 			return grid;
 		}
 		/**
-		 * setWayPoint()方法提供了一种将两个节点相互指定为对方的路标的方式。
+		 * setWaypoint()方法提供了一种将两个节点相互指定为对方的路标的方式。
 		 * @param node1 相互指定为路标的一个AStarNode节点
 		 * @param node2 相互指定为路标的另一个AStarNode节点
 		 */
