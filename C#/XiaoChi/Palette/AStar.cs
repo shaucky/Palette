@@ -62,6 +62,10 @@ namespace XiaoChi.Palette
             {
                 throw (e);
             }
+            if (!startNode.Walkable || !endNode.Walkable)
+            {
+                return null;
+            }
             switch (Heuristics)
             {
                 case EHeuristics.Manhattan:
@@ -174,26 +178,22 @@ namespace XiaoChi.Palette
         private static List<AStarNode> GetNeighbours(List<List<AStarNode>> map, AStarNode node)
         {
             List<AStarNode> nodes = new List<AStarNode>();
-            try
+            if (0 <= node.Y - 1 && node.Y - 1 <= map[0].Count - 1)
             {
                 nodes.Add(map[node.X][node.Y - 1]);
             }
-            catch (ArgumentOutOfRangeException) { }
-            try
+            if (0 <= node.Y + 1 && node.Y + 1 <= map[0].Count - 1)
             {
                 nodes.Add(map[node.X][node.Y + 1]);
             }
-            catch (ArgumentOutOfRangeException) { }
-            try
+            if (0 <= node.X - 1 && node.X - 1 <= map.Count - 1)
             {
                 nodes.Add(map[node.X - 1][node.Y]);
             }
-            catch (ArgumentOutOfRangeException) { }
-            try
+            if (0 <= node.X + 1 && node.X + 1 <= map.Count - 1)
             {
                 nodes.Add(map[node.X + 1][node.Y]);
             }
-            catch (ArgumentOutOfRangeException) { }
             return nodes;
         }
         private static float GetManhattanDistance(AStarNode node1,  AStarNode node2)
