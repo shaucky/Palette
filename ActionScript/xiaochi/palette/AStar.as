@@ -81,6 +81,10 @@
 			{
 				throw(e);
 			}
+			if (!startNode.walkable || !endNode.walkable)
+			{
+				return null;
+			}
 			if (_heuristics == MANHATTAN)
 			{
 				heurisFunc = getManhattanDistance;
@@ -192,26 +196,22 @@
 		private static function getNeighbours(map:Vector.<Vector.<AStarNode>> ,node:AStarNode):Vector.<AStarNode>
 		{
 			const nodes:Vector.<AStarNode> = new Vector.<AStarNode>();
-			try
+			if (0 <= node.y - 1 && node.y - 1 <= map[0].length - 1)
 			{
 				nodes.push(map[node.x][node.y - 1]);
 			}
-			catch(e:RangeError){}
-			try
+			if (0 <= node.y + 1 && node.y + 1 <= map[0].length - 1)
 			{
 				nodes.push(map[node.x][node.y + 1]);
 			}
-			catch(e:RangeError){}
-			try
+			if (0 < node.x - 1 && node.x - 1 <= map.length -1)
 			{
 				nodes.push(map[node.x - 1][node.y]);
 			}
-			catch(e:RangeError){}
-			try
+			if (0 < node.x + 1 && node.x + 1 <= map.length - 1)
 			{
 				nodes.push(map[node.x + 1][node.y]);
 			}
-			catch(e:RangeError){}
 			return nodes;
 		}
 		private static function getManhattanDistance(node1:AStarNode, node2:AStarNode):Number
