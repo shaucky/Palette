@@ -204,7 +204,7 @@
 			{
 				nodes.push(map[node.x][node.y + 1]);
 			}
-			if (0 < node.x - 1 && node.x - 1 <= map.length -1)
+			if (0 < node.x - 1 && node.x - 1 <= map.length - 1)
 			{
 				nodes.push(map[node.x - 1][node.y]);
 			}
