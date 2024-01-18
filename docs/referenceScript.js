@@ -9,7 +9,7 @@ fetch("./index.json")
 		{
 			let divNode = document.createElement("DIV");
 			let aNode = document.createElement("A");
-			aNode.hash = "#" + c.replace(c[0], c[0].toLowerCase);
+			aNode.hash = "#" + c.replace(c[0], c[0].toLowerCase());
 			divNode.appendChild(aNode);
 			LIB_MENU.appendChild(divNode);
 		}
