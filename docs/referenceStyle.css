@@ -27,6 +27,7 @@ div#docBody {
 	height: 100%;
 }
 div#libraryMenu {
+	background: #00110c;
 	float: left;
 	position: fixed;
 	bottom: 0;
@@ -34,6 +35,7 @@ div#libraryMenu {
 	height: calc(100% - 70px - 3px);
 	border-right: solid 3px #ccffee;
 	overflow: scroll;
+	z-index: 8;
 }
 div#content {
 	float: right;
@@ -42,6 +44,7 @@ div#content {
 }
 a, a.new, a.selflink, a:active, a.new:active, a:hover, a.new:hover, a:link, a.new:link, a:visited, a.new:visited{
     color:#09b58b;
+	text-decoration: none;
 }
 h1 {
 	font-size: 20pt;
@@ -53,6 +56,10 @@ h2 {
 }
 p {
 	margin: 10px 0;
+}
+b {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
 }
 img {
 	width: 100%;
