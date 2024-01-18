@@ -16,6 +16,10 @@
 		internal var hCost:Number;
 		internal var parent:AStarNode;
 		private const _waypoints:Vector.<AStarNode> = new Vector.<AStarNode>();
+		
+		/**
+		 * 返回该AStarNode对象的路标列表。这个列表指定了在路标模式下，可以从该AStarNode网格出发的网格。
+		 */
 		public function get waypoints():Vector.<AStarNode>
 		{
 			return _waypoints;

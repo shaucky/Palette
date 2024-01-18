@@ -1,0 +1,49 @@
+{
+	"className": "AStar",
+	"diffInLang": "AStar类的模式与启发式常数在不同语言中的实现有所差异。<ul><li>在ActionScript版本中，模式与启发式常数是以字符串（String）类型的常量实现的。</li><li>在C#版本中，模式与启发式常数是以枚举（Enum）形式实现的。</li></ul>",
+	"langList": "",
+	"actionscript": {
+		"package": "xiaochi.palette",
+		"defination": "public class AStar",
+		"introduce": "AStar类实现了A*寻路算法。支持网格模式（GRID_MODE）和路标模式（WAYPOINTS_MODE），以及曼哈顿启发式和欧几里得启发式。<br>默认使用<b>网格模式</b>和<b>曼哈顿启发式</b>。如果需要使用路标模式或欧几里得启发式，需要在计算之前，更改AStar类的静态属性mode和heuristic。",
+		"staticConst":
+		[
+			["EUCLID", "String", "用于指定欧几里得启发式", "\"euclid\""],
+			["GRID_MODE", "String", "用于指定网格模式", "\"gridMode\""],
+			["MANHATTAN", "String", "用于指定曼哈顿启发式", "\"manhattan\""],
+			["WAYPOINTS_MODE", "String", "用于指定路标模式", "\"waypointsMode\""]
+		],
+		"staticProperty":
+		[
+			["heuristic", "String", "heuristic静态属性指定了AStar在计算时使用的启发式。启发式一定程度上会影响计算的结果。默认值为曼哈顿（MANHATTAN）。<br>有效值为MANHATTAN和EUCLID。"],
+			["mode", "String", "mode静态属性指定了AStar在计算时的模式。默认为网格模式（GRID_MODE）。<br>有效值为GRID_MODE和WAYPOINTS_MODE。<br>在网格模式下，计算得到的结果是一序列网格（AStarNode类）实例。这些网格在几何意义上是相连的，可以直接作为路径使用。可以设置不可作为路径的部分网格（比如障碍物等）的walkable属性为false，这样，计算得到的结果不会经过它们。<br>在路标模式下，计算得到的结果是路径的顶点。作为路标顶点的网格（AStarNode类的实例）之间需要相互被引用在waypoints数组属性中。"]
+		],
+		"staticMethod":
+		[
+			["drawGrid()", "public static function drawGrid(width:Number, height:Number):Vector.&lt;Vector.&lt;AStarNode&gt;&gt;", "drawGrid()方法可以便捷地生成一个AStarNode类型的Vector二维数组。在传递给findPath()方法之前，可以根据实际需求，调整其中部分AStarNode实例的部分属性。<br>width 指定地图网格的宽度<br>height 指定地图网格的高度"],
+			["findPath()", "public static function findPath(map:Vector.&lt;Vector.&lt;AStarNode&gt;&gt;, startX:int, startY:int, endX:int, endY:int):Vector.&lt;AStarNode&gt;", "根据调用findPath()之前设置的mode属性和heuristics属性不同，计算的结果会不同。<br>map 参数指定一个AStarNode类型的Vector二维数组，作为计算使用的地图。一般使用drawGrid()方法生成一个指定尺寸的二维数组作为地图使用<br>startX 参数指定起始网格的x值<br>startY 参数指定起始网格的y值<br>endX 参数指定终点网格的x值<br>endY 参数指定终点网格的y值"],
+			["setWaypoint()", "public static function setWaypoint(node1:AStarNode, node2:AStarNode)", "setWaypoint()方法提供了一种将两个节点相互指定为对方的路标的方式。<br>node1 相互指定为路标的一个AStarNode节点<br>node2 相互指定为路标的另一个AStarNode节点"]
+		]
+	},
+	"csharp": {
+		"namespace": "XiaoChi.Palette",
+		"defination": "public static class AStar",
+		"introduce": "AStar类实现了A*寻路算法。支持网格模式（EMode.Grid）和路标模式（EMode.Waypoints），以及曼哈顿启发式和欧几里得启发式。<br>默认使用<b>网格模式</b>和<b>曼哈顿启发式</b>。如果需要使用路标模式或欧几里得启发式，需要在计算之前，更改AStar类的静态属性Mode和Heuristic。",
+		"enum": 
+		[
+			["EHeuristics", "Euclid、Manhattan"],
+			["EMode", "Grid、Waypoints"]
+		],
+		"staticProperty":
+		[
+			["Heuristics", "EHeuristics", "Heuristic静态属性指定了AStar在计算时使用的启发式。启发式一定程度上会影响计算的结果。默认值为曼哈顿（EHeuristics.Manhattan）。<br>有效值为EHeuristics.Manhattan和Heuristics.Euclid。"],
+			["Mode", "EMode", "Mode静态属性指定了AStar在计算时的模式。默认为网格模式（EMode.Grid）。<br>有效值为EMode.Grid和EMode.Waypoints。<br>在网格模式下，计算得到的结果是一序列网格（AStarNode类）实例。这些网格在几何意义上是相连的，可以直接作为路径使用。可以设置不可作为路径的部分网格（比如障碍物等）的Walkable属性为false，这样，计算得到的结果不会经过它们。<br>在路标模式下，计算得到的结果是路径的顶点。作为路标顶点的网格（AStarNode类的实例）之间需要相互被引用在Waypoints列表属性中。"]
+		],
+		"staticMethod":
+		[
+			["DrawGrid()", "public static List&lt;List&lt;AStarNode&gt;&gt; DrawGrid(float width, float height)", "DrawGrid()方法可以便捷地生成一个AStarNode类型的List二维数组。在传递给FindPath()方法之前，可以根据实际需求，调整其中部分AStarNode实例的部分属性。<br>width 指定地图网格的宽度<br>height 指定地图网格的高度"],
+			["FindPath()", "public static List&lt;AStarNode&gt; FindPath(List&lt;List&lt;AStarNode&gt;&gt; map, int startX, int startY, int endX, int endY)", "FindPath()方法用于计算路径。根据调用FindPath()之前设置的Mode属性和Heuristics属性不同，计算的结果会不同。<br>map 指定一个AStarNode类型的List二维数组，作为计算使用的地图。一般使用DrawGrid()方法生成一个指定尺寸的二维数组作为地图使用<br>startX 指定起始网格的x值<br>startY 指定起始网格的y值<br>endX 指定终点网格的x值<br>endY 指定终点网格的y值"],
+			["SetWaypoint()", "public static void SetWaypoint(AStarNode node1, AStarNode node2)", "SetWaypoint()方法提供了一种将两个节点相互指定为对方的路标的方式。<br>node1 相互指定为路标的一个AStarNode节点<br>node2 相互指定为路标的另一个AStarNode节点"]
+		]
+	}
+}

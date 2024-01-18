@@ -33,7 +33,7 @@
 			}
 		}
 		/**
-		 * heuristic静态属性制定了AStar在计算时使用的启发式。启发式一定程度上会影响计算的结果。默认值为曼哈顿（MANHATTAN）。
+		 * heuristic静态属性指定了AStar在计算时使用的启发式。启发式一定程度上会影响计算的结果。默认值为曼哈顿（MANHATTAN）。
 		 * 有效值为MANHATTAN和EUCLID。
 		 */
 		public static function get heuristics():String
@@ -59,10 +59,10 @@
 		/**
 		 * findPath()方法用于计算路径。根据调用findPath()之前设置的mode属性和heuristics属性不同，计算的结果会不同。
 		 * @param map map参数指定一个AStarNode类型的Vector二维数组，作为计算使用的地图。一般使用drawGrid()方法生成一个指定尺寸的二维数组作为地图使用。
-		 * @param startX startX参数指定起始网格的x值。
-		 * @param startY startY参数指定起始网格的y值。
-		 * @param endX endX参数指定终点网格的x值。
-		 * @param endY endY参数指定终点网格的y值。
+		 * @param startX startX参数指定起始网格的x值
+		 * @param startY startY参数指定起始网格的y值
+		 * @param endX endX参数指定终点网格的x值
+		 * @param endY endY参数指定终点网格的y值
 		 */
 		public static function findPath(map:Vector.<Vector.<AStarNode>>, startX:int, startY:int, endX:int, endY:int):Vector.<AStarNode>
 		{

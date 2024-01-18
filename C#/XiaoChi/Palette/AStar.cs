@@ -5,7 +5,7 @@ namespace XiaoChi.Palette
 {
     /// <summary>
     /// <para>AStar类实现了A*寻路算法。支持网格模式（EMode.Grid）和路标模式（EMode.Waypoints），以及曼哈顿启发式和欧几里得启发式。</para>
-    /// <para>默认使用网格模式和曼哈顿启发式。如果需要使用路标模式或欧几里得启发式，需要在计算之前，更改AStar类的静态属性mode和heuristic。</para>
+    /// <para>默认使用网格模式和曼哈顿启发式。如果需要使用路标模式或欧几里得启发式，需要在计算之前，更改AStar类的静态属性Mode和Heuristic。</para>
     /// </summary>
     public static class AStar
     {
@@ -31,7 +31,7 @@ namespace XiaoChi.Palette
         /// </summary>
         public static EMode Mode { get; set; } = EMode.Grid;
         /// <summary>
-        /// <para>Heuristic静态属性制定了AStar在计算时使用的启发式。启发式一定程度上会影响计算的结果。默认值为曼哈顿（EHeuristics.Manhattan）。</para>
+        /// <para>Heuristic静态属性指定了AStar在计算时使用的启发式。启发式一定程度上会影响计算的结果。默认值为曼哈顿（EHeuristics.Manhattan）。</para>
         /// <para>有效值为EHeuristics.Manhattan和Heuristics.Euclid。</para>
         /// </summary>
         public static EHeuristics Heuristics { get; set; } = EHeuristics.Manhattan;
@@ -39,11 +39,11 @@ namespace XiaoChi.Palette
         /// <summary>
         /// <para>FindPath()方法用于计算路径。根据调用FindPath()之前设置的Mode属性和Heuristics属性不同，计算的结果会不同。</para>
         /// </summary>
-        /// <param name="map">map参数指定一个AStarNode类型的List二维数组，作为计算使用的地图。一般使用DrawGrid()方法生成一个指定尺寸的二维数组作为地图使用。</param>
-        /// <param name="startX">startX参数指定起始网格的x值。</param>
-        /// <param name="startY">startY参数指定起始网格的y值。</param>
-        /// <param name="endX">endX参数指定终点网格的x值。</param>
-        /// <param name="endY">endY参数指定终点网格的y值。</param>
+        /// <param name="map">map参数指定一个AStarNode类型的List二维数组，作为计算使用的地图。一般使用DrawGrid()方法生成一个指定尺寸的二维数组作为地图使用</param>
+        /// <param name="startX">startX参数指定起始网格的x值</param>
+        /// <param name="startY">startY参数指定起始网格的y值</param>
+        /// <param name="endX">endX参数指定终点网格的x值</param>
+        /// <param name="endY">endY参数指定终点网格的y值</param>
         /// <returns></returns>
         public static List<AStarNode> FindPath(List<List<AStarNode>> map, int startX, int startY, int endX, int endY)
         {
@@ -253,6 +253,7 @@ namespace XiaoChi.Palette
                 node1.Waypoints.Add(node2);
             }
         }
+        private delegate float HeuristicsFunction(AStarNode node1, AStarNode node2);
     }
 
     /// <summary>
@@ -266,10 +267,13 @@ namespace XiaoChi.Palette
         public int X { get; set; }
         public int Y { get; set; }
         public bool Walkable { get; set; }
-        public float GCost { get; set; }
-        public float HCost { get; set; }
-        public float FCost { get; set; }
-        public AStarNode Parent { get; set; }
+        internal float GCost { get; set; }
+        internal float HCost { get; set; }
+        internal float FCost { get; set; }
+        internal AStarNode Parent { get; set; }
+        /// <summary>
+        /// 返回该AStarNode对象的路标列表。这个列表指定了在路标模式下，可以从该AStarNode网格出发的网格。
+        /// </summary>
         public List<AStarNode> Waypoints { get; } = new List<AStarNode>();
 
         /// <summary>
@@ -286,6 +290,4 @@ namespace XiaoChi.Palette
             Walkable = walkable;
         }
     }
-
-    public delegate float HeuristicsFunction(AStarNode node1,  AStarNode node2);
 }
