@@ -9,7 +9,8 @@ fetch("./index.json")
 		{
 			let divNode = document.createElement("DIV");
 			let aNode = document.createElement("A");
-			aNode.hash = "#" + c.replace(c[0], c[0].toLowerCase());
+			aNode.innerHTML = c;
+			aNode.href = "#" + c.replace(c[0], c[0].toLowerCase());
 			divNode.appendChild(aNode);
 			LIB_MENU.appendChild(divNode);
 		}
@@ -30,7 +31,5 @@ function openChildPage(e)
 					console.log(contentData);
 				});
 		}
-		console.log(window.location.href.replace("#", ""));
-		history.replaceState(null, null, window.location.href.replace("#", ""));
 	}
 }
