@@ -1,0 +1,71 @@
+@charset "utf-8";
+body {
+	background: #00110c;
+	position: relative;
+	margin: 0;
+}
+div#docHeader {
+	background: #00110c;
+	color: #ffffff;
+	position: fixed;
+	width: 100%;
+	height: 40px;
+	max-height: 40px;
+	padding: 15px 20px;
+	border-bottom: solid 3px #ccffee;
+	z-index: 10;
+}
+div#docHeader .docIcon {
+	position: absolute;
+	top: 10px;
+	right: 50px;
+	width: 50px;
+	text-align: center;
+}
+div#docBody {
+	margin: 0 auto;
+	height: 100%;
+}
+div#libraryMenu {
+	float: left;
+	position: fixed;
+	bottom: 0;
+	width: 16em;
+	height: calc(100% - 70px - 3px);
+	border-right: solid 3px #ccffee;
+	overflow: scroll;
+}
+div#content {
+	float: right;
+	padding: 100px 0 50px ;
+	width: calc(100% - 16em - 33px);
+}
+a, a.new, a.selflink, a:active, a.new:active, a:hover, a.new:hover, a:link, a.new:link, a:visited, a.new:visited{
+    color:#09b58b;
+}
+h1 {
+	font-size: 20pt;
+	margin: 0;
+}
+h2 {
+	font-size: 18pt;
+	margin: 0;
+}
+p {
+	margin: 10px 0;
+}
+img {
+	width: 100%;
+	height: auto;
+	margin: 0 auto;
+	text-align: center;
+}
+@media (max-width: 760px) {
+	div#libraryMenu {
+		width: 30%;
+	}
+	div#content {
+		padding: 100px 10px 50px;
+		width: calc(70% - 33px);
+	}
+}
