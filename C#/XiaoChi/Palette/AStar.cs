@@ -215,6 +215,7 @@ namespace XiaoChi.Palette
                 path.Add(currNode);
                 currNode = currNode.Parent;
             }
+            path.Add(currNode);
             path.Reverse();
             return path;
         }

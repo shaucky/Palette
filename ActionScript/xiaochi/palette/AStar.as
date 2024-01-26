@@ -233,6 +233,7 @@
 				path.push(currNode);
 				currNode = currNode.parent;
 			}
+			path.push(currNode);
 			path.reverse();
 			return path;
 		}
